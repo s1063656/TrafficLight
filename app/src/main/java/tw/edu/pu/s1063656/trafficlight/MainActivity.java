@@ -41,9 +41,10 @@ public class MainActivity extends AppCompatActivity {
         rLight = (EditText) findViewById(R.id.redLight);
 
         if(gLight.getText().toString().equals("")||yLight.getText().toString().equals("")||rLight.getText().toString().equals("")) {
-
+            Toast.makeText(this,"燈號的秒數不能為空白",Toast.LENGTH_SHORT).show();
+        }else if (gLight.getText().toString().equals("0")||yLight.getText().toString().equals("0")||rLight.getText().toString().equals("0")) {
             Toast.makeText(this,"燈號的秒數不能為0",Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             it.putExtra("gLightTime", Integer.parseInt(gLight.getText().toString()));
             it.putExtra("yLightTime", Integer.parseInt(yLight.getText().toString()));
             it.putExtra("rLightTime", Integer.parseInt(rLight.getText().toString()));
