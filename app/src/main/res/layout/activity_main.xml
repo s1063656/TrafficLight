@@ -56,41 +56,44 @@
         app:layout_constraintStart_toEndOf="@+id/btnStart" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/gLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="請輸入綠燈秒數"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/gl2"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName2"
+        app:layout_constraintEnd_toStartOf="@+id/yellowLight"
+        app:layout_constraintHorizontal_bias="0.313"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/gl1" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/yellowLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="請輸入黃燈秒數"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/gLight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toTopOf="@+id/gLight"
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/redLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="請輸入紅燈秒數"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
+        android:inputType="number"
+
+        app:layout_constraintBottom_toBottomOf="@+id/yellowLight"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintStart_toEndOf="@+id/yellowLight"
+        app:layout_constraintTop_toTopOf="@+id/yellowLight" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

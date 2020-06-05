@@ -2,6 +2,7 @@ package tw.edu.pu.s1063656.trafficlight;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -14,7 +15,8 @@ import android.view.View;
 public class GameActivity extends AppCompatActivity {
     GameSurfaceView GameSV;
     Handler handler;
-
+    Intent it;
+    int gLightTime , yLightTime , rLightTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,11 @@ public class GameActivity extends AppCompatActivity {
 
         GameSV = (GameSurfaceView) findViewById(R.id.GameSV);
         //設定初始測試之燈號秒數
-        GameSV.SetLightSec(6,2,3);
+        it = getIntent();
+        gLightTime = it.getIntExtra("gLightTime",0);
+        yLightTime = it.getIntExtra("yLightTime",0);
+        rLightTime = it.getIntExtra("rLightTime",0);
+        GameSV.SetLightSec(gLightTime,yLightTime,rLightTime);
 
         handler = new Handler();
 
