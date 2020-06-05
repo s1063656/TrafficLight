@@ -14,7 +14,7 @@ import android.view.SurfaceView;
 public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callback  {
     SurfaceHolder surfaceHolder;
     Bitmap Road, Boy;
-
+    public int count = 0;
 
     int GreenLightSec, YellowLightSec, RedLightSec; //各燈號秒數
     Boolean BoyMoving = false; //小男孩是否移動
@@ -86,6 +86,7 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
             step++;
             if (step>8){
                 step = 1;
+                count++;
             }
             int res = getResources().getIdentifier("boy" + (step), "drawable", getContext().getPackageName());
             Boy = BitmapFactory.decodeResource(getResources(), res);
@@ -105,7 +106,7 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         paint.setStyle(Paint.Style.FILL);
         paint.setTextSize((int) 60 * canvas.getHeight() / 1080);
         paint.setAntiAlias(true);
-        canvas.drawText("圖片編號：" + String.valueOf(step), (int) (0), (int) (canvas.getHeight()*0.1) ,paint);
+        canvas.drawText("圖片編號：" + String.valueOf(step)+"，分數："+String.valueOf(count), (int) (0), (int) (canvas.getHeight()*0.1) ,paint);
     }
 
     //紅綠燈繪製
