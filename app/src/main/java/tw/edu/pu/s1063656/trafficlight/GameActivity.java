@@ -46,6 +46,8 @@ public class GameActivity extends AppCompatActivity {
         handler = new Handler();
 
     }
+
+
     //利用手指觸控，控制小男孩走路
     public boolean onTouchEvent (MotionEvent event){
         if (event.getAction() == MotionEvent.ACTION_MOVE){
@@ -69,4 +71,5 @@ public class GameActivity extends AppCompatActivity {
             handler.postDelayed(runnable, 50);
         }
     };
+
 }

@@ -1,6 +1,9 @@
 package tw.edu.pu.s1063656.trafficlight;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -84,9 +87,44 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     public void DrawBoy(Canvas canvas){
         if (BoyMoving){  //分數加1，並改變小男孩走路圖示
             step++;
-            if (step>8){
+            if (step>8) {
                 step = 1;
-                count++;
+                if(count==10){
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("遊戲結束");
+                    builder.setMessage("您此次的成績是10分，不可以闖紅燈喔！");
+                    builder.setPositiveButton("結束遊戲",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            // TODO Auto-generated method stub
+                            Runtime.getRuntime().exit(0);
+                        }
+
+                    });
+                    builder.setNegativeButton("再玩一次",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            // TODO Auto-generated method stub
+                            count = 0;
+                            step = 1;
+                        }
+
+                    });
+
+                    builder.setNeutralButton("設定燈號秒數切換",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            // TODO Auto-generated method stub
+                            Intent it = new Intent(getContext(),MainActivity.class);
+                            getContext().startActivity(it);
+
+                        }
+
+                    });
+                    builder.show();
+                }else{
+                    count++;
+                }
             }
             int res = getResources().getIdentifier("boy" + (step), "drawable", getContext().getPackageName());
             Boy = BitmapFactory.decodeResource(getResources(), res);
